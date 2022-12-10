@@ -18,8 +18,7 @@ echo "Select from the following options: "
 echo ""
 echo "1) Specific chapter and verse."
 echo "2) Search for a keyword."
-echo "3) Learn more about the Church of Jesus Christ
-         of Latter-day Saints."
+echo "3) Learn more about the Church of Jesus Christ \nof Latter-day Saints."
 echo "4) Exit."
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
 read -p "Choice: " answer 
@@ -34,7 +33,7 @@ clear
     2) echo ""
        read -p "Enter keyword here:  " KEY
        echo ""
-       KPULL=$(curl -s ${LINK} | grep -w "${KEY}")
+       KPULL=$(curl -s ${LINK} | grep --color=always -w "${KEY}" | less -R)
        
        echo "${KPULL}\n"
        ;;
