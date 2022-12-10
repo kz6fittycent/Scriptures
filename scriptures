@@ -1,19 +1,50 @@
 #!/bin/sh
 
+# VARS
+###################################################
+LINK="https://raw.githubusercontent.com/beandog/lds-scriptures/master/text/lds-scriptures.txt"
+COJC="https://www.churchofjesuschrist.org/"
+###################################################
+
+clear
+while [ answer != "0" ]  
+do 
 clear
 
-echo "  ____            _       _\n / ___|  ___ _ __(_)_ __ | |_ _   _ _ __ ___  ___\n \___ \ / __| '__| | '_ \| __| | | | '__/ _ \/ __|\n  ___) | (__| |  | | |_) | |_| |_| | | |  __/\__ \ \n |____/ \___|_|  |_| .__/ \__|\__,_|_|  \___||___/\n                   |_|\n"                            
-
+echo "  ____            _       _\n / ___|  ___ _ __(_)_ __ | |_ _   _ _ __ ___  ___\n \___ \ / __| '__| | '_ \| __| | | | '__/ _ \/ __|\n  ___) | (__| |  | | |_) | |_| |_| | | |  __/\__ \ \n |____/ \___|_|  |_| .__/ \__|\__,_|_|  \___||___/\n                   |_|\n"      
 echo ""
-read -p "Please enter the Scripture you'd like to read here (e.g. 1 Nephi 1:1):  
-
-" SCRIP
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "Select from the following options: " 
 echo ""
-echo ""
-
-PULL=$(curl -s https://raw.githubusercontent.com/beandog/lds-scriptures/master/text/lds-scriptures.txt | grep -s "${SCRIP}" -m1 | fmt)
-
-
-echo "${PULL}"
-echo ""
-
+echo "1) Specific chapter and verse."
+echo "2) Search for a keyword."
+echo "3) Learn more about the Church of Jesus Christ
+         of Latter-day Saints."
+echo "4) Exit."
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
+read -p "Choice: " answer 
+clear
+    case $answer in
+    1) echo ""
+       read -p "Please enter the Scripture you'd like to read here (e.g. 1 Nephi 1:1):  " SCRIP
+       echo ""
+       PULL=$(curl -s ${LINK} | grep -s "${SCRIP}" -m1 | fmt)
+       echo "${PULL}\n"
+       ;;
+    2) echo ""
+       read -p "Enter keyword here:  " KEY
+       echo ""
+       KPULL=$(curl -s ${LINK} | grep -w "${KEY}")
+       
+       echo "${KPULL}\n"
+       ;;
+    3) echo ""
+       echo "To learn more, please visit: ${COJC}\n"
+       ;;
+    4) break 
+       ;;
+   esac  
+   echo "press RETURN for menu\n" 
+   read key 
+done 
+exit 0    
