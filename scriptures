@@ -18,7 +18,7 @@ echo "Select from the following options: "
 echo ""
 echo "1) Specific chapter and verse."
 echo "2) Search for a keyword."
-echo "3) Learn more about the Church of Jesus Christ \nof Latter-day Saints."
+echo "3) Learn more about the Church of Jesus Christ \n   of Latter-day Saints."
 echo "4) Exit."
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
 read -p "Choice: " answer 
@@ -29,13 +29,35 @@ clear
        echo ""
        PULL=$(curl -s ${LINK} | grep -s "${SCRIP}" -m1 | fmt)
        echo "${PULL}\n"
+       
+       read -p "Would you like to export the result to a file? [Yn]  " EXP
+       case $EXP in
+         [yY]) echo "Exporting to a text file..."
+               sleep .5
+               echo "${PULL}" | tee /home/$USER/"${SCRIP}".txt               
+               echo "File is located here: /home/$USER/${SCRIP}.txt"
+               ;;
+         [nN]) ;;
+       esac
        ;;
     2) echo ""
        read -p "Enter keyword here:  " KEY
        echo ""
-       KPULL=$(curl -s ${LINK} | grep --color=always -w "${KEY}" | less -R)
+       KPULL=$(curl -s ${LINK} | grep --color='always' -w "${KEY}" | less -R)
        
        echo "${KPULL}\n"
+       
+       read -p "Would you like to export the results to a file? [Yn]  " EXP2
+       KPULL2=$(curl -s ${LINK} | grep --color='auto' -w "${KEY}" | less -R)
+       
+       case $EXP2 in
+         [yY]) echo "Exporting to a text file..."
+               sleep .5
+               echo "${KPULL2}" | tee /home/$USER/"${KEY}".txt
+               echo "File is located here: /home/$USER/${KEY}.txt"
+               ;;
+         [nN]) ;;
+       esac
        ;;
     3) echo ""
        echo "To learn more, please visit: ${COJC}\n"

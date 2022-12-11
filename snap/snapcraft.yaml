@@ -28,6 +28,7 @@ apps:
       LC_ALL: C.UTF-8
     plugs:
       - network
+      - home
       
 parts:
   scriptures:
