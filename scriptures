@@ -17,7 +17,7 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "Select from the following options: " 
 echo ""
 echo "1) Specific chapter and verse."
-echo "2) Search for a keyword."
+echo "2) Search for a keyword, or phrase."
 echo "3) Learn more about the Church of Jesus Christ \n   of Latter-day Saints."
 echo "4) Exit."
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
@@ -27,7 +27,7 @@ clear
     1) echo ""
        read -p "Please enter the Scripture you'd like to read here (e.g. 1 Nephi 1:1):  " SCRIP
        echo ""
-       PULL=$(curl -s ${LINK} | grep -s "${SCRIP}" -m1 | fmt)
+       PULL=$(curl -s ${LINK} | grep -s --color='always' "${SCRIP}" -m1 | fmt)
        echo "${PULL}\n"
        
        read -p "Would you like to export the result to a file? [Yn]  " EXP
@@ -41,7 +41,7 @@ clear
        esac
        ;;
     2) echo ""
-       read -p "Enter keyword here:  " KEY
+       read -p "Enter keyword or phrase here (e.g. Alma\ and\ Amulek):  " KEY
        echo ""
        KPULL=$(curl -s ${LINK} | grep --color='always' -w "${KEY}" | less -R | fold -s --width=70)
        
