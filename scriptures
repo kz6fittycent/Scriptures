@@ -43,12 +43,12 @@ clear
     2) echo ""
        read -p "Enter keyword here:  " KEY
        echo ""
-       KPULL=$(curl -s ${LINK} | grep --color='always' -w "${KEY}" | less -R | fmt)
+       KPULL=$(curl -s ${LINK} | grep --color='always' -w "${KEY}" | less -R | fold -s --width=70)
        
        echo "${KPULL}\n"
        
        read -p "Would you like to export the results to a file? [Yn]  " EXP2
-       KPULL2=$(curl -s ${LINK} | grep --color='auto' -w "${KEY}" | less -R | fmt)
+       KPULL2=$(curl -s ${LINK} | grep --color='auto' -w "${KEY}" | less -R | fold -s --width=70)
        
        case $EXP2 in
          [yY]) echo "Exporting to a text file..."
