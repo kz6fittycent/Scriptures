@@ -44,8 +44,11 @@ clear
        read -p "Enter keyword or phrase here (e.g. Alma\ and\ Amulek):  " KEY
        echo ""
        KPULL=$(curl -s ${LINK} | grep --color='always' -w "${KEY}" | less -R | fold -s --width=70)
+       COUNT=$(curl -s ${LINK} | grep -w ${KEY} | wc -l)
        
-       echo "${KPULL}\n"
+       echo "${KPULL}\n\n"
+       echo "${COUNT} instances of ${KEY} found...\n"
+       sleep 1.5
        
        read -p "Would you like to export the results to a file? [Yn]  " EXP2
        KPULL2=$(curl -s ${LINK} | grep --color='auto' -w "${KEY}" | less -R | fold -s --width=70)
