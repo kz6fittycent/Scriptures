@@ -41,10 +41,10 @@ clear
        esac
        ;;
     2) echo ""
-       read -p "Enter keyword or phrase here (e.g. Alma\ and\ Amulek):  " KEY
+       read -p "Enter keyword or phrase here (e.g. Alma and Amulek):  " KEY
        echo ""
        KPULL=$(curl -s ${LINK} | grep --color='always' -w "${KEY}" | less -R | fold -s --width=70)
-       COUNT=$(curl -s ${LINK} | grep -w ${KEY} | wc -l)
+       COUNT=$(curl -s ${LINK} | grep -iw "${KEY}" | wc -l)
        
        echo "${KPULL}\n\n"
        echo "${COUNT} instances of ${KEY} found...\n"
