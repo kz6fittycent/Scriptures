@@ -24,6 +24,6 @@
 
 ---
 
-### Consider contributing to this project with a PR ###
+### Consider contributing to this project with a PR to TESTING branch ###
 
 https://github.com/kz6fittycent/scriptures/pulls 
