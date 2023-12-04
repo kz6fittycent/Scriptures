@@ -28,7 +28,7 @@ clear
     1) echo ""
        read -p "Please enter the Scripture you'd like to read here (e.g. 1 Nephi 1:1):  " SCRIP
        echo ""
-       PULL=$(curl -s ${LINK} | grep -s --color='always' "${SCRIP}" -m1 | fmt)
+       PULL=$(curl -s ${LINK} | grep -is --color='always' "${SCRIP}" -m1 | fmt)
        echo "${PULL}\n"
        
        read -p "Would you like to export the result to a file? [Yn]  " EXP
@@ -44,7 +44,7 @@ clear
     2) echo ""
        read -p "Enter keyword or phrase here (e.g. Alma and Amulek):  " KEY
        echo ""
-       KPULL=$(curl -s ${LINK} | grep --color='always' -w "${KEY}" | less -R | fold -s --width=70)
+       KPULL=$(curl -s ${LINK} | grep --color='always' -iw "${KEY}" | less -R | fold -s --width=70)
        COUNT=$(curl -s ${LINK} | grep -iw "${KEY}" | wc -l)
        
        echo "${KPULL}\n\n"
@@ -69,7 +69,7 @@ clear
        read -p "Enter book of scripture (e.g. 1 Peter):  " BK
        echo ""
        
-       KPULL=$(curl -s ${LINK} | grep --color='always' -w "${SPEC}" | grep --color='auto' "${BK}" | less -R | fold -s --width=70)
+       KPULL=$(curl -s ${LINK} | grep --color='always' -iw "${SPEC}" | grep --color='auto' "${BK}" | less -R | fold -s --width=70)
        COUNT=$(curl -s ${LINK} | grep -iw "${SPEC}" | grep -iw "${BK}" | wc -l)
        
        echo "${KPULL}\n\n"
