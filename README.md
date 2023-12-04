@@ -1,5 +1,7 @@
 # Scriptures
 
+[![scriptures](https://snapcraft.io/scriptures/badge.svg)](https://snapcraft.io/scriptures)
+
 ### A simple way to read the Standard Works of the Church of Jesus Christ of Latter-day Saints. English only.
 
 ## Special thanks to:
