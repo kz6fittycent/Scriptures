@@ -16,10 +16,12 @@ description: |
      * https://scriptures.byu.edu/
 
 license: MIT
-
 base: core20
 grade: stable
 confinement: strict
+website: https://github.com/kz6fittycent/Scriptures
+issues: https://github.com/kz6fittycent/Scriptures/issues
+source-code: https://github.com/kz6fittycent/Scriptures
 
 apps:
   scriptures:
