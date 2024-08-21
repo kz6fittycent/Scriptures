@@ -16,7 +16,7 @@ description: |
      * https://scriptures.byu.edu/
 
 license: MIT
-base: core20
+base: core24
 grade: stable
 confinement: strict
 website: https://github.com/kz6fittycent/Scriptures
@@ -39,8 +39,8 @@ parts:
     plugin: nil
     
     override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
+      craftctl default
+      craftctl set version="$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"  
 
     stage-packages:
       - curl
