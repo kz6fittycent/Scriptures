@@ -1,6 +1,6 @@
 # Scriptures
 
-[![scriptures](https://snapcraft.io/scriptures/badge.svg)](https://snapcraft.io/scriptures)
+[![scriptures](https://snapcraft.io/scriptures/badge.svg)](https://snapcraft.io/scriptures) [![🧪 Snap Builds](https://github.com/kz6fittycent/Scriptures/workflows/%F0%9F%A7%AA%20Snap%20Builds/badge.svg)](https://github.com/kz6fittycent/Scriptures/actions?query=workflow:"🧪+Snap+Builds")
 
 ### A simple way to read the Standard Works of the Church of Jesus Christ of Latter-day Saints. English only.
 
